@@ -51,6 +51,7 @@
     <Compile Include="GildedRoseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GuildedRoseRunner.cs" />
+    <Compile Include="TextTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

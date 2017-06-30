@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GildedRose
@@ -14,7 +15,17 @@ namespace GildedRose
 		{
 			for (var i = 0; i < Items.Count; i++)
 			{
-				if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+			    if (Items[i].Name == "Conjured")
+			    {
+			        if (Items[i].Quality < 50)
+			        {
+			            Items[i].Quality -= 2;
+			        }
+                    continue;
+			    }
+
+
+                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
 				{
 					if (Items[i].Quality > 0)
 					{
@@ -48,6 +59,8 @@ namespace GildedRose
 								}
 							}
 						}
+
+					    
 					}
 				}
 				
@@ -85,7 +98,18 @@ namespace GildedRose
 				}
 			}
 		}
-		
+
+	    private void UpdateAgedBrie(Item item)
+	    {
+	        item.SellIn = Math.Max(0, item.SellIn - 1);
+
+            item.Quality = Math.Max(50, item.Quality + 1);
+
+	        if (item.SellIn == 0)
+	        {
+    	        item.Quality = Math.Max(50, item.Quality + 1);
+            }
+	    }
 	}
 	
 	public class Item
